@@ -1,5 +1,7 @@
 <?php
 
+require_once "../Models/Company.php";
+
 class CompanyController{
 
     public function index(){
@@ -31,5 +33,15 @@ class CompanyController{
 
     public static function all(){
         return Company::all();
+    }
+}
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['method'])) { // aqui é onde vai decorrer a chamada se houver um *request* POST
+    $method = $_POST['method'];
+    if(method_exists('CompanyController', $method)) {
+        $companycontroller = new CompanyController;
+        $companycontroller->$method($_POST);
+    }
+    else {
+        echo 'Metodo incorreto';
     }
 }

@@ -1,7 +1,7 @@
 <?php 
 
-    require_once "../Models/User.php";
-    session_start();
+require_once "../Models/User.php";
+session_start();
 
 class UserController{
 
@@ -30,6 +30,6 @@ class UserController{
     }
 }
 if($_SERVER["REQUEST_METHOD"] == "POST") { // aqui é onde vai decorrer a chamada se houver um *request* POST
-    $product = new UserController;
-    $product->check($_POST);
+    $usercontroller = new UserController;
+    $usercontroller->check($_POST);
 }

@@ -1,6 +1,6 @@
 <?php
 
-//namespace models;
+require_once "../DataBase/Connection.php";
 
 class Company{
     private $id;
@@ -10,7 +10,8 @@ class Company{
     public static function create($name, $federation){
         $connection = Connection::getConnection();
         $exist = "select * from companys where name = '{$name}'";
-        if(mysqli_num_rows($exist) == 0){
+        $result = mysqli_query($connection, $exist);
+        if(mysqli_num_rows($result) == 0){
             $query = "insert into companys (name, federation) values ('{$name}', '{$federation}')";
             $result = mysqli_query($connection, $query);
         }
@@ -30,12 +31,14 @@ class Company{
 
     public function update($id, $name, $federation){
         $connection = Connection::getConnection();
+        //SET SQL_SAFE_UPDATES=0;
         $query = "update companys set name = '{$name}', federation = '{$federation}' where id = '{$id}'";
         $result = mysqli_query($connection, $query);
     }
 
     public function delete($id){
         $connection = Connection::getConnection();
+        //SET SQL_SAFE_UPDATES=0;
         $query = "delete from companys where id = '{$id}'";
         $result = mysqli_query($connection, $query);
     }

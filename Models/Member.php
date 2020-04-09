@@ -1,7 +1,5 @@
 <?php
 
-namespace models;
-
 class Member{
 
     private $id;

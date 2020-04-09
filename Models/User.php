@@ -1,6 +1,6 @@
 <?php
 
-namespace models;
+require_once "../DataBase/Connection.php";
 
 class User{
     private $id;
@@ -33,15 +33,15 @@ class User{
     }
 
     public function getName(){
-        return $this->id;
+        return $this->name;
     }
 
     public function getEmail(){
-        return $this->id;
+        return $this->email;
     }
 
     public function getPassword(){
-        return $this->id;
+        return $this->password;
     }
 
     public function setId($id){
