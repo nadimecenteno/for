@@ -1,7 +1,5 @@
 <?php
 
-require_once "../DataBase/Connection.php";
-
 class Company{
     private $id;
     private $name;
@@ -15,6 +13,9 @@ class Company{
             $query = "insert into companys (name, federation) values ('{$name}', '{$federation}')";
             $result = mysqli_query($connection, $query);
         }
+        else{
+            return 1;
+        }
     }
 
     public static function all(){
@@ -22,23 +23,33 @@ class Company{
         $query = "select * from companys";
         $result = mysqli_query($connection, $query);
         $companys;
-        for ($i=0; $i < mysqli_num_rows($result); $i++) { 
-            $company = mysqli_fetch_assoc($result);
-            $companys[$i] = new Company($company['id'], $company['name'], $company['federation']);
+        if(mysqli_num_rows($result) == 0){
+            return 1;
         }
-        return $companys;
+        else{
+            for ($i=0; $i < mysqli_num_rows($result); $i++) { 
+                $company = mysqli_fetch_assoc($result); // ACHO QUE AQUI É FORA DO FOR
+                $companys[$i] = new Company($company['id'], $company['name'], $company['federation']);
+            }
+            return $companys;
+        }
     }
 
     public function update($id, $name, $federation){
         $connection = Connection::getConnection();
-        //SET SQL_SAFE_UPDATES=0;
-        $query = "update companys set name = '{$name}', federation = '{$federation}' where id = '{$id}'";
-        $result = mysqli_query($connection, $query);
+        $exist = "select * from companys where name = '{$name}'";
+        $result = mysqli_query($connection, $exist);
+        if(mysqli_num_rows($result) == 0){
+            $query = "update companys set name = '{$name}', federation = '{$federation}' where id = '{$id}'";
+            $result = mysqli_query($connection, $query);
+        }
+        else{
+            return 1;
+        }
     }
 
     public function delete($id){
         $connection = Connection::getConnection();
-        //SET SQL_SAFE_UPDATES=0;
         $query = "delete from companys where id = '{$id}'";
         $result = mysqli_query($connection, $query);
     }

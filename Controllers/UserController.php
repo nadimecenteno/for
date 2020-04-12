@@ -1,12 +1,20 @@
 <?php 
 
-require_once "../Models/User.php";
 session_start();
 
 class UserController{
 
-    public function check(){
-        $user = User::find($_POST['email'], $_POST['password']);
+    public static function createAcccount($name, $email, $password){
+        $conta = User::create($name, $email, $password);
+        if($conta == 1){
+            echo "Já existe uma conta cadastrada com esse email.";
+        }
+        else{
+            header("Location: /Treinamento Ecompjr/Views/home.php");
+        }
+    }
+
+    public static function check($user){
         if($user){
             $_SESSION['user'] = $user->getName();
             header("Location: /Treinamento Ecompjr/Views/admin/dashboard.php");
@@ -17,9 +25,9 @@ class UserController{
         }
     }
 
-    public function verifyLogin(){
+    public static function verifyLogin(){
         if(!$_SESSION['user']){
-            header("Location: /Treinamento Ecompjr/Views/Login.php"); //home/login
+            header("Location: /Treinamento Ecompjr/Views/Login.php");
         }
     }
 
@@ -29,7 +37,7 @@ class UserController{
         header("Location: /Treinamento Ecompjr/Views/home.php");
     }
 }
-if($_SERVER["REQUEST_METHOD"] == "POST") { // aqui é onde vai decorrer a chamada se houver um *request* POST
-    $usercontroller = new UserController;
-    $usercontroller->check($_POST);
+if(isset($_GET['logout-submit']) && $_GET['logout-submit'] == 'logout'){
+    UserController::logout();
 }
+  

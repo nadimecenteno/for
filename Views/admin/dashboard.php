@@ -1,8 +1,10 @@
 <?php 
+
     session_start();    
     echo "Olá ".$_SESSION['user'];
 ?>
-<a href="/Treinamento Ecompjr/user/logout">Sair</a>
+
+<a href="../../Controllers/UserController.php?logout-submit=logout">Sair</a>
 
 <br>
 <br>

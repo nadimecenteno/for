@@ -1,7 +1,5 @@
 <?php
 
-require_once "../DataBase/Connection.php";
-
 class User{
     private $id;
     private $name;
@@ -25,6 +23,19 @@ class User{
         }
         else{
             return false;
+        }
+    }
+
+    public static function create($name, $email, $password){
+        $connection = Connection::getConnection();
+        $exist = "select * from users where email = '{$email}'";
+        $result = mysqli_query($connection, $exist);
+        if(mysqli_num_rows($result) == 0){
+            $query = "insert into users (name, email, password) values ('{$name}', '{$email}', '{$password}')";
+            $result = mysqli_query($connection, $query);
+        }
+        else{
+            return 1;
         }
     }
 
