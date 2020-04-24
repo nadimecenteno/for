@@ -1,33 +1,33 @@
 <?php 
 
-session_start();
-
 class UserController{
 
     public static function createAcccount($name, $email, $password){
+        session_start();
         $conta = User::create($name, $email, $password);
         if($conta == 1){
-            echo "Já existe uma conta cadastrada com esse email.";
+            return 11;
         }
         else{
-            header("Location: /Treinamento Ecompjr/Views/home.php");
+            return 22;
         }
     }
 
     public static function check($user){
+        session_start();
         if($user){
             $_SESSION['user'] = $user->getName();
             header("Location: /Treinamento Ecompjr/Views/admin/dashboard.php");
         }
         else{
+            echo "E-mail e senha incompatíveis.";
             $_SESSION['failed'] = True;
-            header("Location: /Treinamento Ecompjr/Views/login.php");
         }
     }
 
     public static function verifyLogin(){
         if(!$_SESSION['user']){
-            header("Location: /Treinamento Ecompjr/Views/Login.php");
+            header("Location: /Treinamento Ecompjr/Views/home.php");
         }
     }
 

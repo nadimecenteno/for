@@ -1,0 +1,44 @@
+.row-centered{
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    text-align:left;
+    margin-right:-4px;
+    text-align: center;
+}
+#brasil-junior{
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+#icone-mais-informacoes{
+    vertical-align:bottom !important;
+}
+#logo-produto{
+    width:90%; 
+    max-height:269px;
+}
+#texto-produto{
+    text-align:justify;
+}
+#card-texto-produto{
+    max-width: 18rem;
+}
+#card-imagem-produto{ 
+    max-width: 18rem;
+    max-height: 9rem;
+    background-color: transparent !important;
+    border-color: transparent;
+    opacity: 90% !important;
+    padding: 3% !important;
+}
+#card-imagem-produto:hover{
+    opacity: 100% !important;
+
+}
+#div-produtos{
+    margin-right: 2%;
+    background-size:cover;
+    background-repeat:no-repeat;
+}

@@ -11,7 +11,7 @@
 ?>
 
 <html>
-    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+    <form action="" method="post">
      <!--<form action="/Treinamento Ecompjr/company/update < ?php $company->getId()?>" method="post">-->
         <input type="hidden" name="method" value="update">
         <!--<input name="name" value="< ?php echo $company->getName()?>" placeholder="name">-->

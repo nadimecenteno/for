@@ -6,12 +6,18 @@ require_once "../Controllers/UserController.php";
 
 ?>
 <html>
-    <form action="<?php $_SERVER['PHP_SELF'];?>" method="post">
-        <input type="email" name="email" placeholder="email" required>        
-        <input type="password" name="password" placeholder="password" required>
+    <form action="login.php" method="post">
+        <div class="form-group">
+            <label for="endemail">Endereço de email</label>
+            <input type="email" name="email" class="form-control" id="endemail" placeholder="email@exemplo.com" required>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" name="password" class="form-control" id="senha" placeholder="Senha" required>
+        </div>
         <a href = "/Treinamento Ecompjr/Views/admin/dashboard.php">
-            <button type="submit"> Entrar </button>
-        </a>      
+            <button type="submit" class="btn btn-primary"> Entrar </button>
+        </a>
     </form>
 </html>
 
