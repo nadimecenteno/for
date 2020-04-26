@@ -7,33 +7,22 @@
     UserController::verifyLogin();
 ?>
 <?php
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $_SESSION['id'] = $_POST['id'];
-        switch($_POST['btn'])
-        {
-            case "edit":?>
-                <html>
-                    <!-- Modal Cadastrar Empresa -->
-                    <div class="modal fade" id="modal-cadastrar-empresa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header" style="background-color: #007bff">
-                                    <h5 class="modal-title" id="exampleModalLabel" style="color: white">Cadastrar Empresa</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </html>
-            <?php break;
-            
-            case "delete":
-            CompanyController::delete($_SESSION['id']);
-            break;
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['method'])){
+        if(($_POST['method'] == "edit") || ($_POST['method'] == "delete")){
+            $_SESSION['id'] = $_POST['id'];
+            switch($_POST['btn'])
+            {
+                case "edit":
+                $_SESSION['name'] = $_POST['name'];
+                $_SESSION['federation'] = $_POST['federation'];
+                include("../../Views/admin/company/editFront.php");
+                break;
+                
+                case "delete":
+                CompanyController::delete($_SESSION['id']);
+                break;
+            }
+
         }
     }
 ?>
@@ -60,7 +49,10 @@
                     <td>
                         <form action="" method="post">
                             <input type="hidden" name="id" value="<?php echo $company->getId(); ?>">
-                            <button type="submit" name="btn" value="edit" class="btn btn-primary" data-toggle="modal" data-target="#modal-cadastrar-empresa">
+                            <input type="hidden" name="name" value="<?php echo $company->getName(); ?>">
+                            <input type="hidden" name="federation" value="<?php echo $company->getFederation(); ?>">
+                            <button type="submit" name="btn" value="edit" class="btn btn-primary">
+                                <input type="hidden" name="method" value="edit">
                                 <i class="far fa-edit"></i>
                                 Editar
                             </button>

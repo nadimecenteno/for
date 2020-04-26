@@ -37,7 +37,7 @@ class Company{
 
     public function update($id, $name, $federation){
         $connection = Connection::getConnection();
-        $exist = "select * from companys where name = '{$name}'";
+        $exist = "select * from companys where name = '{$name}' and id != '{$id}'";
         $result = mysqli_query($connection, $exist);
         if(mysqli_num_rows($result) == 0){
             $query = "update companys set name = '{$name}', federation = '{$federation}' where id = '{$id}'";

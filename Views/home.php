@@ -15,9 +15,17 @@ require_once "../Controllers/UserController.php";
         <title>Brasil Júnior</title>
     </head>
     <body>
+        <!--NavBar Página Inicial-->
         <div class="row">
             <div class="col-sm-2">
+                <!--Logo Brasil Junior-->
+                <nav class="navbar navbar-white bg-white">
+                    <a class="navbar-brand" href="home.php">
+                        <img src="../Assets/pics/logoBrasilJuniorNavBar.png" width="70" height="50" class="d-inline-block align-top" alt="">
+                    </a>
+                </nav>
             </div>
+            <!--Menu principal-->
             <div class="col-sm-6">
                 <div style="padding:1%">
                     <ul class="nav nav-pills flex-column flex-sm-row mb-3 nav-fill" id="pills-tab" role="tablist">
@@ -37,25 +45,26 @@ require_once "../Controllers/UserController.php";
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="flex-sm-fill text-sm-center nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            <a class="flex-sm-fill text-sm-center nav-link dropdown" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                 Contato
                             </a>
-                            <div class="dropdown-menu">
+                            <!--Dropdown Menu com Contato-->
+                            <div class="dropdown-menu" id="contato">
                                 <a class="dropdown-item" href="https://www.facebook.com/brasiljunior/" target="_blank">
-                                    <i class="fab fa-facebook-square"></i>      Facebook
+                                    <i class="fab fa-facebook-square p-1" style="color: #3b5998 !important;"></i>      Facebook
                                 </a>
                                 <a class="dropdown-item" href="https://www.youtube.com/channel/UCJpa3dGqxDUkZq3tFDf0l4Q" target="_blank">
-                                <i class="fab fa-youtube"></i>      Youtube
+                                    <i class="fab fa-youtube p-1" style="color: #c4302b !important"></i>      Youtube
                                 </a>
                                 <a class="dropdown-item" href="https://www.instagram.com/bjnoinsta/" target="_blank">
-                                    <i class="fab fa-instagram"></i>      Instagram
+                                    <i class="fab fa-instagram p-1" style="color: #8a3ab9 !important"></i>      Instagram
                                 </a>
                                 <a class="dropdown-item" href="https://open.spotify.com/show/7IMjbTXIPCQFDeIBCJtIA1?si=I7DGqPjtR122tgGCQRdbNA" target="_blank">
-                                    <i class="fab fa-spotify"></i>      Spotify
+                                    <i class="fab fa-spotify p-1" style="color: #1DB954 !important"></i>      Spotify
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" data-toggle="modal" data-target="#enviar-mensagem">
-                                    <i class="far fa-envelope"></i>      Envie-nos uma mensagem
+                                    <i class="far fa-envelope p-1" style="color: #3b5998 !important"></i>      Envie-nos uma mensagem
                                 </a>
                             </div>
                         </li>
@@ -63,26 +72,32 @@ require_once "../Controllers/UserController.php";
                 </div>
             </div>
 
-
+            <!--Menu Login e Cadastro-->
             <div class="col-sm-4">
-                <div style="padding:1%">
+                <div style="padding:1%; padding-right: 10%">
                     <ul class="nav nav-pills justify-content-end">
-                        <li class="nav-item dropdown-right">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                Entrar
-                            </a>
-                            <div class="dropdown-menu p-4" style="width:60%;">
-                                <?php include("login.php") ?>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown-right">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                Cadastrar-se
-                            </a>
-                            <div class="dropdown-menu p-4">
-                                <?php include("account.php");?>
-                            </div>
-                        </li>
+                        <div class="p-1">
+                            <li class="nav-item dropdown-right">
+                                <button class="btn btn-primary nav-link dropdown" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-sign-in-alt p-1"></i>
+                                    Entrar
+                                </button>
+                                <div class="dropdown-menu p-4" style="width:60%;">
+                                    <?php include("login.php") ?>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="p-1">
+                            <li class="nav-item dropdown-right">
+                                <button class="btn btn-primary nav-link dropdown" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user-plus p-1"></i>    
+                                    Cadastrar-se
+                                </button>
+                                <div class="dropdown-menu p-4">
+                                    <?php include("account.php");?>
+                                </div>
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -128,18 +143,21 @@ require_once "../Controllers/UserController.php";
             </div>
         </div>
 
-        <!--BRASIL JÚNIOR-->
-        <?php include("includesHome/BrasilJunior.html");?>
+        <div class="tab-content" id="pills-tabContent">
+            <!--BRASIL JÚNIOR-->
+            <div class="tab-pane fade show active" id="brasil-junior" role="tabpanel" aria-labelledby="brasil-junior-tab" style="background-image: url('../Assets/pics/pattern_geometric_colorful_139497_1280x720.JPG'); background-size:cover; background-repeat:no-repeat;">
+                <?php include("includesHome/BrasilJunior.html");?>
+            </div>
 
-        <!--MOVIMENTO EMPRESA JÚNIOR-->
-        <?php include("includesHome/MEJ.html");?>
+            <!--MOVIMENTO EMPRESA JÚNIOR-->
+            <div class="tab-pane fade" id="mej" role="tabpanel" aria-labelledby="mej-tab" style="background-image: url('../Assets/pics/sky_clouds_blue_146273_1280x720.JPG'); background-size:cover; background-repeat:no-repeat;">
+                <?php include("includesHome/MEJ.html");?>
+            </div>
 
-        <!--PARCEIROS-->
-        <?php include("includesHome/Parceiros.html");?>
-
-        <!--CONTATO-->
-        <div class="tab-pane fade" id="contato" role="tabpanel" aria-labelledby="pills-contact-tab">
-        
+            <!--PARCEIROS-->
+            <div class="tab-pane fade" id="parceiros" role="tabpanel" aria-labelledby="parceiros-tab" style="background-image: url('../Assets/pics/wooden_painted_geometric_139259_1280x720.jpg'); background-size:cover; background-repeat:no-repeat;">
+                <?php include("includesHome/Parceiros.html");?>
+            </div>
         </div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -155,5 +173,9 @@ require_once "../Controllers/UserController.php";
     border-bottom-left-radius: 15px !important;
     border-top-left-radius: 15px !important;
 
+}
+html, body {
+    height: 100%;
+    width: 100%;
 }
 </style>

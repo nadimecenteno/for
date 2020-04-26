@@ -15,10 +15,10 @@ class CompanyController{
     public static function update($id, $name, $federation){
         $company = Company::update($id, $name, $federation);
         if($company == 1){
-            echo "Já existe uma empresa cadastrada com esse nome.";
+            return 11;
         }
         else{
-            header("Location: /Treinamento Ecompjr/Views/admin/dashboard.php");
+            return 22;
         }
     }
 

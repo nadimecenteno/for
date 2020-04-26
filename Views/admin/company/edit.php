@@ -1,23 +1,33 @@
 <?php
-    require_once "../../../DataBase/Connection.php";
-    require_once "../../../Models/User.php";
-    require_once "../../../Controllers/UserController.php";
-    require_once "../../../Models/Company.php";
-    require_once "../../../Controllers/CompanyController.php";
-    UserController::verifyLogin();
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        CompanyController::update($_SESSION['id'], $_POST['name'], $_POST['federation']);
+
+require_once "../../../DataBase/Connection.php";
+require_once "../../../Models/Company.php";
+require_once "../../../Controllers/CompanyController.php";
+
+?>
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['method'])){
+        $method = $_POST['method'];
+        if($method == "update"){
+            $retorno = CompanyController::update($_POST['id'], $_POST['name'], $_POST['federation']);
+            if($retorno == 11){?>
+                <html>
+                    <script>
+                        alert("Já existe uma empresa cadastrada com esse nome.");
+                        window.location.href = "/Treinamento Ecompjr/Views/admin/dashboard.php";
+                    </script>
+                </html>
+            <?php }
+            if($retorno == 22){?>
+                <html>
+                    <script>
+                        alert("Dados da empresa atualizados com sucesso!");
+                        window.location.href = "/Treinamento Ecompjr/Views/admin/dashboard.php";
+                    </script>
+                </html>
+            <?php }    
+
+        }
     }
 ?>
 
-<html>
-    <form action="" method="post">
-     <!--<form action="/Treinamento Ecompjr/company/update < ?php $company->getId()?>" method="post">-->
-        <input type="hidden" name="method" value="update">
-        <!--<input name="name" value="< ?php echo $company->getName()?>" placeholder="name">-->
-        <input name="name" placeholder="name" required>
-        <!--<input name="federation" value="< ?php echo $company->getFederation()?>" placeholder="federation"> -->         
-        <input name="federation" placeholder="federation" required>          
-        <button type="submit"> Salvar </button>
-    </form>
-</html>

@@ -1,0 +1,19 @@
+#logo-parceiros{
+    max-width: 18rem !important;
+    max-height: 18rem !important;
+}
+#img-logo-parceiros{
+    max-width: 18rem !important;
+    max-height: 18rem !important;
+}
+body{
+    height: 100%;
+    width: 100%;
+}
+.container{
+    height: 30%;
+    width: 100%;
+}
+.carousel-item{
+    height: 100%;
+}

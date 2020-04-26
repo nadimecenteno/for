@@ -1,8 +1,8 @@
 <?php
 
-require_once "../../DataBase/Connection.php";
-require_once "../../Models/Company.php";
-require_once "../../Controllers/CompanyController.php";
+require_once "../../../DataBase/Connection.php";
+require_once "../../../Models/Company.php";
+require_once "../../../Controllers/CompanyController.php";
 
 ?>
 <?php
@@ -27,26 +27,5 @@ require_once "../../Controllers/CompanyController.php";
                 </html>
             <?php }
         }
-        else {
-            echo 'Metodo incorreto';
-        }
     }
 ?>
-
-<html>
-    <form action="" method="post">
-        <input type="hidden" name="method" value="store">
-        <div class="form-group">
-            <label for="name">Nome da Empresa:</label>
-            <input type="text" class="form-control" name="name" id="name" placeholder="Informe o nome da empresa" required>
-        </div>
-        <div class="form-group">
-            <label for="federation">Nome da Federação:</label>
-            <input type="text" class="form-control" name="federation" id="federation" placeholder="Informe o nome da federação da empresa" required>
-        </div>
-        <div class="modal-footer"> 
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-        </div>
-    </form>
-</html>
