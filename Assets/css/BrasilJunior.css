@@ -21,6 +21,7 @@
 }
 #texto-produto{
     text-align:justify;
+    border-color:transparent;
 }
 #card-texto-produto{
     max-width: 18rem;
